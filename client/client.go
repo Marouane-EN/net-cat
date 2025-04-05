@@ -1,7 +1,18 @@
-// Entry point for the client
-package main
+// Optional client mode
+package client
 
-func main() {
-    // TODO: Connect to server and start client UI
+import (
+	"fmt"
+	"net"
+)
+
+type Client struct {
+	Name string
+	Conn net.Conn
 }
 
+func GetClientName(conn net.Conn) string {
+	var name string
+	fmt.Fscanln(conn, &name)
+	return name
+}
